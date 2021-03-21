@@ -1,33 +1,27 @@
-import React, { ReactElement, useEffect, useState } from "react";
-import axios from "axios";
+import React, { ChangeEvent, ReactElement, useCallback, useState } from "react";
 import GameList from "./GameList";
-import { Game } from "types";
-import { API_HOST } from "./const";
-import { API_KEY } from "./const";
+import { Filter } from "types";
+import useFetch from "../../hooks/useFetch";
 
 // GameListRender component
 const GameListRender = (): ReactElement => {
   // set initial state
-  const [games, setGames] = useState<Game[]>([]);
-  const [err, setErr] = useState<string>("");
+  const [filter, setFilter] = useState<Filter>({
+      platform: "browser",
+      sort: "relevance",
+    }),
+    { games, error } = useFetch(filter);
 
-  useEffect(() => {
-    axios
-      .get("/games", {
-        baseURL: `https://${API_HOST}/api`,
-        headers: {
-          "x-rapidapi-key": API_KEY,
-          "x-rapidapi-host": API_HOST,
-        },
-        params: {
-          platform: "browser",
-        },
-      })
-      .then((res) => setGames(res.data))
-      .catch((e) => setErr(e.message));
-  });
+  // change selected option's display when filter select has changed
+  const onFilterChange = useCallback((e: ChangeEvent<HTMLFormElement>) => {
+    setFilter((current) => ({
+      ...current,
+      [e.target.name]: e.target.value,
+    }));
+    e.preventDefault();
+  }, []);
 
-  return <GameList err={err} games={games} />;
+  return <GameList err={error} games={games} onFilterChange={onFilterChange} />;
 };
 
 export default GameListRender;
