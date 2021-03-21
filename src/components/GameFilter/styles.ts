@@ -7,7 +7,7 @@ export const Form = styled.form`
   justify-content: space-between;
   max-width:542px;
   padding 0 16px;
-  margin: 24px auto;
+  margin: 30px auto;
   color: ${secondaryTextColor};
   box-sizing: border-box
 
@@ -16,7 +16,7 @@ export const Form = styled.form`
   }
 
   @media (min-width: ${breakpoints.desktop}) {
-    max-width: 1010px;
+    max-width: 810px;
   }
 `;
 
@@ -33,7 +33,9 @@ export const Label = styled.label`
 // filter select style
 export const Select = styled.select`
   width: 100%;
+  height: 25px;
   margin-top: 0;
   color: white;
   background-color: ${backgroundColor};
+  border-radius: 3px;
 `;

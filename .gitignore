@@ -3,3 +3,8 @@ dist
 build
 .vscode/
 appsettings.ts
+
+# firebase
+.firebase/
+.firebaserc
+firebase.json

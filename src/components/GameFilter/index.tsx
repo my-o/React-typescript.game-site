@@ -33,7 +33,8 @@ const GameFilter = ({ onChange }: Props): ReactElement => {
         </Select>
       </Label>
       {/* tag select */}
-      <Label htmlFor="tag-select">
+      {/* tag filter doesn't work well, check api doc, fix later */}
+      {/* <Label htmlFor="tag-select">
         Tag:
         <Select name="tag" id="tag-select">
           {TAGS.map((tag) => (
@@ -42,7 +43,7 @@ const GameFilter = ({ onChange }: Props): ReactElement => {
             </option>
           ))}
         </Select>
-      </Label>
+      </Label> */}
       {/* sort select */}
       <Label htmlFor="sort-select">
         Sort:
