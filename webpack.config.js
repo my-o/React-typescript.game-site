@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
@@ -7,6 +8,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[contenthash].bundle.js",
+    assetModuleFilename: "assets/[name].[hash].[ext]",
   },
   module: {
     rules: [
@@ -14,6 +16,10 @@ module.exports = {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         use: ["babel-loader"],
+      },
+      {
+        test: /\.(svg)$/,
+        type: "asset/resource",
       },
     ],
   },

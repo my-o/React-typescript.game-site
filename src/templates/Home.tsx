@@ -1,6 +1,11 @@
 import React, { ReactElement } from "react";
 import GameListRender from "templates/GameList";
 
-const Home = (): ReactElement => <GameListRender />;
+// Home component
+const Home = (): ReactElement => (
+  <main>
+    <GameListRender />
+  </main>
+);
 
 export default Home;

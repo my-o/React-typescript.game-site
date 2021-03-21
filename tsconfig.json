@@ -30,6 +30,6 @@
       "*": ["node_modules", "src/*"]
     }
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "globalTypes/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts", "*/*.test.ts"]
 }
